@@ -1,0 +1,8 @@
+[
+  {"id":"DNS.Cloudflare","title":"Cloudflare DNS","menu":"Cloudflare","host":"1.1.1.1","median":8.4,"loss":0,"sd":0.7},
+  {"id":"DNS.Google","title":"Google DNS","menu":"Google","host":"8.8.8.8","median":12.6,"loss":0,"sd":1.2},
+  {"id":"DNS.Quad9","title":"Quad9 DNS","menu":"Quad9","host":"9.9.9.9","median":18.2,"loss":0,"sd":1.8},
+  {"id":"Infrastructure.Gateway","title":"Office gateway","menu":"Gateway","host":"192.168.1.1","median":1.3,"loss":0,"sd":0.2},
+  {"id":"Infrastructure.London","title":"London VPS","menu":"London","host":"lon-vps.example.net","median":32.8,"loss":0.5,"sd":4.6},
+  {"id":"Infrastructure.Frankfurt","title":"Frankfurt VPS","menu":"Frankfurt","host":"fra-vps.example.net","median":22.1,"loss":2.5,"sd":6.1}
+]

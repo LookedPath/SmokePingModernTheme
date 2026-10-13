@@ -1,0 +1,12 @@
+{
+  "name": "smokeping-atlas-theme",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/preview.mjs",
+    "test": "node --test tests/core.test.mjs && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "check": "node --check theme/atlas/atlas.js && node --check theme/atlas/renderer.js && node --check theme/atlas/core.js && node --check theme/atlas/graph-init.js && node --check theme/atlas/theme-init.js && node --check tools/preview.mjs",
+    "package": "python3 tools/package.py"
+  }
+}

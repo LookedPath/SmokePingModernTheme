@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="atlas-graph-loading" content="native">
+  <meta name="atlas-renderer" content="">
+  <meta name="color-scheme" content="light dark">
+  <title><##title##> · SmokePing</title>
+  <style id="atlas-startup-colors">
+    :root { color-scheme:light; --atlas-bg:#f5f7fb; --atlas-text:#1c2a3d; background:var(--atlas-bg); color:var(--atlas-text); }
+    :root[data-theme="dark"] { color-scheme:dark; --atlas-bg:#11171f; --atlas-text:#e7edf5; }
+    @media (prefers-color-scheme:dark) { :root[data-theme="system"] { color-scheme:dark; --atlas-bg:#11171f; --atlas-text:#e7edf5; } }
+    body { margin:0; background:var(--atlas-bg); }
+  </style>
+  <script src="/smokeping/atlas/theme-init.js"></script>
+  <link rel="stylesheet" href="/smokeping/atlas/atlas.css">
+</head>
+<body id="body" data-step="<##step##>">
+  <a class="atlas-skip" href="#atlas-main">Skip to graphs</a>
+  <header class="atlas-header">
+    <button class="atlas-icon-button atlas-menu-button js-only" id="atlas-menu-button" type="button" aria-label="Open target navigation" aria-expanded="false" aria-controls="sidebar">
+      <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a class="atlas-brand" href="?" data-home>
+      <span class="atlas-brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+      <span>Smoke<span class="atlas-brand-light">Ping</span></span>
+    </a>
+    <div class="atlas-header-actions">
+      <label class="atlas-search js-only" id="atlas-search-control" hidden>
+        <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+        <span class="atlas-sr-only">Filter graphs on this page</span>
+        <input id="atlas-search" type="search" placeholder="Filter this view…" autocomplete="off" aria-controls="atlas-overview">
+      </label>
+      <label class="atlas-appearance js-only">
+        <span class="atlas-sr-only">Appearance</span>
+        <select id="atlas-theme" aria-label="Appearance"><option value="system">System</option><option value="light">White</option><option value="dark">Dark</option></select>
+      </label>
+    </div>
+  </header>
+  <div class="atlas-shell">
+    <aside id="sidebar" class="atlas-sidebar" aria-label="Target navigation">
+      <div class="atlas-sidebar-top"><span class="atlas-eyebrow">Browse targets</span><button id="atlas-menu-close" class="atlas-icon-button atlas-menu-close js-only" type="button" aria-label="Close target navigation"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <a class="atlas-home" href="?" data-home><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>All targets</a>
+      <nav id="atlas-targets" aria-label="SmokePing targets"><##menu##></nav>
+      <div class="atlas-sidebar-foot"><span class="atlas-eyebrow">Monitoring</span><p><##smokeping##></p><p class="atlas-viewer">Viewer: <##authuser##></p></div>
+    </aside>
+    <main id="atlas-main" class="atlas-main" tabindex="-1">
+      <nav class="atlas-breadcrumb js-only" id="atlas-breadcrumb" aria-label="Breadcrumb"></nav>
+      <div class="atlas-page-heading"><div><h1 id="atlas-title"><##title##></h1><p class="atlas-target-address"><##target_ip##></p></div><div class="atlas-refresh js-only"><button id="atlas-refresh-now" class="atlas-button" type="button">Refresh</button><label class="atlas-refresh-switch"><input type="checkbox" id="atlas-auto-refresh" checked>Auto refresh</label></div></div>
+      <div class="atlas-remark"><##remark##></div>
+      <div class="atlas-section-toolbar js-only" id="atlas-overview-toolbar" hidden><h2>Targets <span id="atlas-target-count"></span></h2><span class="atlas-caption">Select a graph to view its history</span></div>
+      <section id="atlas-overview" class="atlas-overview" aria-label="Target overview"><##overview##></section>
+      <p id="atlas-no-matches" class="atlas-empty js-only" role="status" hidden>No graphs match this filter.</p>
+      <nav id="atlas-ranges" class="atlas-range-links js-only" aria-label="Graph time ranges" hidden></nav>
+      <section id="atlas-details" class="atlas-details" aria-label="Detailed graphs"><##body##></section>
+      <div id="atlas-empty-view" class="atlas-empty js-only" hidden><h2>Choose a target group</h2><p>Browse the navigation to see latency and packet-loss graphs.</p></div>
+      <p class="atlas-page-status js-only" id="atlas-page-status" aria-live="polite"></p>
+      <footer class="atlas-footer"><p>Powered by <##smokeping##> and <a href="https://oss.oetiker.ch/rrdtool/">RRDtool</a><span class="atlas-footer-author"> · <##author##></span></p><p>Maintained by <a href="mailto:<##contact##>"><##owner##></a></p></footer>
+    </main>
+  </div>
+  <button class="atlas-backdrop js-only" id="atlas-backdrop" type="button" aria-label="Close target navigation" hidden></button>
+  <dialog class="atlas-graph-dialog" id="atlas-graph-dialog" aria-labelledby="atlas-dialog-title">
+    <div class="atlas-dialog-head"><h2 id="atlas-dialog-title">Full-size graph</h2><form method="dialog"><button class="atlas-button" type="submit">Close</button></form></div>
+    <p class="atlas-caption">Scroll to inspect the full-size graph.</p>
+    <div class="atlas-dialog-canvas"><img id="atlas-dialog-image" alt=""></div>
+  </dialog>
+  <script src="/smokeping/atlas/graph-init.js"></script>
+  <script type="module" src="/smokeping/atlas/atlas.js"></script>
+</body>
+</html>
